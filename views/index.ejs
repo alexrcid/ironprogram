@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <!-- Theme CSS -->
+    <link href="/stylesheets/grayscale.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- ******************************** FACEBOOK LOGIN  ***************************************** -->
+    <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '466277830396996',
+            xfbml      : true,
+            version    : 'v2.10'
+          });
+          FB.AppEvents.logPageView();
+        };
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "//connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+    </script>
+<!-- ******************************** FACEBOOK LOGIN  ***************************************** -->      <!-- Navigation -->
+      <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+          <div class="container">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                      Menu <i class="fa fa-bars"></i>
+                  </button>
+                  <a class="navbar-brand page-scroll" href="#page-top">
+                      <i class="fa fa-play-circle"></i> <span class="light">Ironman</span> Progress
+                  </a>
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                  <ul class="nav navbar-nav">
+                      <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                      <li class="hidden">
+                          <a href="#page-top"></a>
+                      </li>
+                      <li>
+                          <a class="page-scroll" href="#about">About</a>
+                      </li>
+                      <li>
+                        <a class="page-scroll" href="#training">Training</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#nutrition">Nutrition</a>
+                    </li>
+                    <li>
+                      <!--Replace a by button -->
+                       <a onclick="document.getElementById('loginb').style.display='block'" style="width:auto;">Login</a>
+                    </li>
+                    <li>
+                      <a onclick="document.getElementById('signupb').style.display='block'" style="width:auto;">Sign Up</a>
+                    </li>
+                 </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container -->
+      </nav>
+      <!-- Intro Header -->
+      <header class="intro">
+          <div class="intro-body">
+              <div class="container">
+                <div id="loginb" class="modal">
+                <style>
+                    .fbcss {
+                      background-color: black;
+                    }
+                    .modal-content{
+                      background-color: black;
+                    }
+                    .modal-content input {
+                      color: black;
+                    }
+                </style>
+                  <form class="modal-content animate" action="/login" method="POST">
+                    <div class="fbcss">
+                      <label><b>Username</b></label>
+                      <input type="text" placeholder="Enter Username" name="username" required>
+                      <label><b>Password</b></label>
+                      <input type="password" placeholder="Enter Password" name="password" required>
+                      <button type="submit">Login</button>
+                        <input type="checkbox" checked="checked"> Remember me
+                      <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
+                    </div>
+                    <div id="fb-root"></div>
+                  </form>
+                </div>
+                <div id="signupb" class="modal">
+                  <form class="modal-content animate" action="/signup">
+                    <div class="container">
+                      <label><b>Username</b></label>
+                      <input type="text" placeholder="Enter Username" name="username" required>
+                      <label><b>Password</b></label>
+                      <input type="password" placeholder="Enter Password" name="password" required>
+                      <button type="submit">Sign Up</button>
+                      <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
+                      <script>(function(d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=466277830396996";
+                            fjs.parentNode.insertBefore(js, fjs);
+                          }(document, 'script', 'facebook-jssdk'));
+                          var login = document.getElementById('loginb');
+                          var signup = document.getElementById('signupb');
+                          var modals = [login, signup]
+                          window.onclick = function(event) {
+                            modals.forEach(function(modal){
+                              if (event.target == modal) {
+                                  modal.style.display = "none";
+                              }
+                            })
+                          }
+                      </script>
+                    </div>
+                  </form>
+                </div>
+                  <div class="row">
+                      <div class="col-md-8 col-md-offset-2">
+                          <h1 class="brand-heading"><%= title %></h1>
+                          <p class="intro-text">The Race Starts Now</p>
+                          <a href="#about" class="btn btn-circle page-scroll">
+                              <i class="fa fa-angle-double-down animated"></i>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </header>
+      <!-- About Section -->
+      <section id="about" class="container content-section text-center">
+          <div class="row">
+              <div class="col-lg-8 col-lg-offset-2">
+                  <h2>About Us</h2>
+                  <p>A common misconception about the Ironman is that prior to race week you required to work harder, to then completely shut down and rest.
+                    Studies proved it is more advantageous to gradually decrease work-rate. </p>
+                  <p>The program starts with three to four days of aerobic recovery sessions and days off, followed by shorter training sessions at threshold, and shorter aerobic base work the weekend before your Ironman.</p>
+                  <p>The week of Ironman follows a similar pattern, with further reduced sessions. You should gradually feel more rested, while staying sharp. </p>
+                  <p>Stay mentally engaged with your training, and avoid feeling like you are hanging on for the taper. Once you start racing, the weeks of training click in, the cobwebs shake off and your fitness will shine through!</p>
+              </div>
+          </div>
+      </section>
+      <!-- Training Section -->
+      <section id="training" class="container content-section text-center">
+          <div class="row">
+              <div class="col-lg-8 col-lg-offset-2">
+                <h2>Training Structure</h2>
+                  <p>This training program was created to prepare for an ironman in the final months, therefore the structure is central.
+                  The week’s structure is rather routine in which disciplines will be exercised. Mondays are always kept for swimming, and occasional sessions on Thursdays. </p>
+                  <p>Running and Cycling are more often than not done together and in succession, on Tuesdays, Thursdays and Saturdays.
+                  It is important to follow the order which was shown on the exercise to prepare yourself for a certain challenges you may face during the transitions.
+                  The other days are free rest days, which are mandatory because an injury 2 months prior to race day can kill all your chances to properly compete.</p>
+              </div>
+          </div>
+      </section>
+      <!-- Nutrition Section -->
+      <section id="nutrition" class="container content-section text-center">
+          <div class="row">
+              <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Nutrition</h2>
+                    <p>Nutrition is arguably one of the most important and difficult parts of preparing for an Ironman.
+                    We believe each person is unique physically and in their preferences, which is why we place confidence in customized meals.</p>
+                    <p>Due to the fact this is such an important commitment we also encourage you meeting with a nutritionist to create a personal diet.
+                    Therefore we won’t be posting any Ironman diet, but will add link to websites which have made solid plans.</p>
+              </div>
+          </div>
+      </section>
+      <!-- Footer -->
+      <footer>
+          <div class="container text-center">
+              <p>Copyright &copy; Ironman Program</p>
+          </div>
+      </footer>
+      <!-- jQuery -->
+      <script src="vendor/jquery/jquery.js"></script>
+      <!-- Bootstrap Core JavaScript -->
+      <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+      <!-- Plugin JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+      <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+      <!-- Theme JavaScript -->
+      <script src="js/grayscale.min.js"></script>
+  </body>
+</html>
+<!-- ***************  LOGIN EN LANDPAGE ************* -->
+<!-- <div class="containerLogin">
+  <form action="/login" method="POST">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" name="username">
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" name="password">
+    </div>
+    <div>
+      <input type="submit" value="Log In">
+    </div>
+  </form>
+</div> -->
